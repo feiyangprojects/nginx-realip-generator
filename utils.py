@@ -114,13 +114,13 @@ class RealIP:
             raise IndexError("Source must has at least one item")
 
     def run_single(self):
-        with open(self.destination, "w") as f:
+        with open("{}/real_ip.conf".format(self.destination), "w") as f:
             method = getattr(self, "get_{}".format(self.source[0]))
             result: RealIPGetResult = method()
             for ip in result["ips"]:
                 if self.filter(ip):
-                    f.write("set_real_ip_from {};".format(ip))
-            f.write("real_ip_header {};".format(result["header"]))
+                    f.write("set_real_ip_from {};\n".format(ip))
+            f.write("real_ip_header {};\n".format(result["header"]))
 
     def run_multiple(self):
         realip = open("{}/real_ip.conf".format(self.destination), "w")
