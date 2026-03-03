@@ -1,0 +1,7 @@
+[Unit]
+Description=Automatically generate NGINX Real IP config for CDN services
+[Timer]
+OnCalendar=weekly
+Unit=backup.service
+[Install]
+WantedBy=timers.target

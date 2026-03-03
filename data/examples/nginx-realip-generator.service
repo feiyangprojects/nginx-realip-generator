@@ -1,0 +1,8 @@
+[Unit]
+Description=Generate NGINX Real IP config for CDN services
+[Service]
+User=root
+Group=root
+ExecStart=/usr/bin/python3 .
+WorkingDirectory=/opt/backup
+PrivateTmp=true

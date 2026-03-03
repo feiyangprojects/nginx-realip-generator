@@ -1,0 +1,14 @@
+{
+    "source": [
+        "cloudfront",
+        "cloudflare"
+    ],
+    "filter": {
+        "token": "",
+        "country": {
+            "exclude": [],
+            "include": []
+        }
+    },
+    "destination": ""
+}
