@@ -81,7 +81,7 @@ class RealIP:
         ).json()
 
         return {
-            "header": "CloudFront-Viewer-Address",
+            "header": "X-Forwarded-For",
             "ips": [
                 *[
                     ip["ipv6_prefix"]
