@@ -146,14 +146,15 @@ class RealIP:
             realip_multiple_headers.write("}\n")
 
         realip_multiple_headers.write(
-            'map "{}" $real_ip {{\n'.format(
+            'map {} $real_ip {{\n'.format(
                 ":".join(["$with_{}".format(h) for h in normalized_headers])
             )
         )
+        realip_multiple_headers.write('    default $realip_remote_addr;\n')
         entries = ["1" if i == 0 else "0" for i, _ in enumerate(normalized_headers)]
         for header in normalized_headers:
             realip_multiple_headers.write(
-                '    "{}" $http_{};\n'.format(":".join(entries), header)
+                '    {} $http_{};\n'.format(":".join(entries), header)
             )
             entries.insert(0, entries.pop())
         realip_multiple_headers.write(
